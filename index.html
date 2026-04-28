@@ -2,100 +2,181 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Student Tools Hub</title>
 
 <style>
 body {
   margin: 0;
-  font-family: Arial;
-  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  color: white;
 }
 
 .navbar {
-  background: rgba(0,0,0,0.7);
-  color: white;
-  padding: 15px 30px;
-  font-size: 20px;
+  padding: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
 }
 
 .container {
-  padding: 40px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
+  padding: 40px;
 }
 
 .card {
-  background: white;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
   padding: 25px;
-  width: 300px;
-  border-radius: 15px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
   text-align: center;
-  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
   transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
 }
 
 input {
   width: 90%;
-  padding: 10px;
-  margin: 5px;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
 }
 
 button {
-  padding: 10px 20px;
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  margin-top: 10px;
+  padding: 12px 20px;
   border: none;
-  color: white;
   border-radius: 8px;
+  background: linear-gradient(45deg, #3b82f6, #06b6d4);
+  color: white;
+  font-weight: bold;
   cursor: pointer;
 }
 
 button:hover {
-  opacity: 0.8;
+  transform: scale(1.05);
 }
 </style>
 </head>
 
 <body>
 
-<div class="navbar">
-  <h2>Student Tools</h2>
-</div>
+<div class="navbar">🚀 Student Tools Hub</div>
 
 <div class="container">
 
+<!-- Percentage -->
 <div class="card">
-  <h3>Percentage</h3>
-  <input id="total" placeholder="Total">
-  <input id="obtained" placeholder="Obtained">
-  <button onclick="calc()">Calculate</button>
-  <p id="res"></p>
+<h3>Percentage Calculator</h3>
+<input id="total" placeholder="Total Marks">
+<input id="obtained" placeholder="Obtained Marks">
+<button onclick="calc()">Calculate</button>
+<p id="res"></p>
 </div>
 
-</div>
+<!-- CGPA -->
 <div class="card">
-  <h3>CGPA Calculator</h3>
-  <input id="cgpa" placeholder="Enter CGPA">
-  <button onclick="cgpaCalc()">Convert</button>
-  <p id="cgpaRes"></p>
+<h3>CGPA Calculator</h3>
+<input id="cgpa" placeholder="Enter CGPA">
+<button onclick="cgpaCalc()">Convert</button>
+<p id="cgpaRes"></p>
+</div>
+
+<!-- Age -->
+<div class="card">
+<h3>Age Calculator</h3>
+<input type="date" id="dob">
+<button onclick="ageCalc()">Calculate</button>
+<p id="ageRes"></p>
+</div>
+
+<!-- BMI -->
+<div class="card">
+<h3>BMI Calculator</h3>
+<input id="weight" placeholder="Weight (kg)">
+<input id="height" placeholder="Height (m)">
+<button onclick="bmiCalc()">Calculate</button>
+<p id="bmiRes"></p>
+</div>
+
+<!-- Interest -->
+<div class="card">
+<h3>Simple Interest</h3>
+<input id="p" placeholder="Principal">
+<input id="r" placeholder="Rate">
+<input id="t" placeholder="Time">
+<button onclick="siCalc()">Calculate</button>
+<p id="siRes"></p>
+</div>
+
+<!-- Discount -->
+<div class="card">
+<h3>Discount Calculator</h3>
+<input id="price" placeholder="Original Price">
+<input id="disc" placeholder="Discount %">
+<button onclick="discCalc()">Calculate</button>
+<p id="discRes"></p>
+</div>
+
 </div>
 
 <script>
-  function cgpaCalc(){
-  let c = document.getElementById("cgpa").value;
-  document.getElementById("cgpaRes").innerText = (c*9.5).toFixed(2)+"%";
-}
+
+// Percentage
 function calc(){
-  let t=document.getElementById("total").value;
-  let o=document.getElementById("obtained").value;
-  document.getElementById("res").innerText = (o/t*100).toFixed(2)+"%";
+let t = document.getElementById("total").value;
+let o = document.getElementById("obtained").value;
+document.getElementById("res").innerText = (o/t*100).toFixed(2) + "%";
 }
+
+// CGPA
+function cgpaCalc(){
+let c = document.getElementById("cgpa").value;
+document.getElementById("cgpaRes").innerText = (c*9.5).toFixed(2) + "%";
+}
+
+// Age
+function ageCalc(){
+let dob = new Date(document.getElementById("dob").value);
+let diff = Date.now() - dob.getTime();
+let age = new Date(diff).getUTCFullYear() - 1970;
+document.getElementById("ageRes").innerText = age + " Years";
+}
+
+// BMI
+function bmiCalc(){
+let w = document.getElementById("weight").value;
+let h = document.getElementById("height").value;
+let bmi = (w/(h*h)).toFixed(2);
+document.getElementById("bmiRes").innerText = "BMI: " + bmi;
+}
+
+// Interest
+function siCalc(){
+let p = document.getElementById("p").value;
+let r = document.getElementById("r").value;
+let t = document.getElementById("t").value;
+let si = (p*r*t)/100;
+document.getElementById("siRes").innerText = "SI: " + si;
+}
+
+// Discount
+function discCalc(){
+let price = document.getElementById("price").value;
+let d = document.getElementById("disc").value;
+let final = price - (price*d/100);
+document.getElementById("discRes").innerText = "Final Price: " + final;
+}
+
 </script>
+
 </body>
 </html>
