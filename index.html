@@ -9,173 +9,155 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
   color: white;
 }
 
 .navbar {
-  padding: 20px;
-  font-size: 24px;
-  font-weight: bold;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  background: rgba(0,0,0,0.3);
 }
+
+.logo { width: 40px; margin-right: 10px; }
 
 .container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  padding: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  padding: 25px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  background: rgba(255,255,255,0.1);
+  padding: 15px;
+  border-radius: 12px;
   text-align: center;
   transition: 0.3s;
 }
 
 .card:hover {
-  transform: translateY(-8px) scale(1.03);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+  transform: translateY(-5px);
 }
 
 input {
   width: 90%;
-  padding: 12px;
-  margin: 8px 0;
-  border-radius: 8px;
+  padding: 8px;
+  margin: 5px;
+  border-radius: 6px;
   border: none;
 }
 
 button {
-  margin-top: 10px;
-  padding: 12px 20px;
+  padding: 8px 15px;
   border: none;
-  border-radius: 8px;
-  background: linear-gradient(45deg, #3b82f6, #06b6d4);
+  border-radius: 6px;
+  background: orange;
   color: white;
-  font-weight: bold;
   cursor: pointer;
-}
-
-button:hover {
-  transform: scale(1.05);
 }
 </style>
 </head>
 
 <body>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Tools Hub</title>
+<link rel="stylesheet" href="style.css">
+</head>
 
-<div class="navbar">🚀 Student Tools Hub</div>
+<body>
+
+<div class="navbar">
+  <img src="logo.png" class="logo">
+  <h2>Student Tools Hub</h2>
+</div>
+
+<div class="menu">
+  <a href="math.html" class="card">📐 Math Tools</a>
+  <a href="finance.html" class="card">💰 Finance Tools</a>
+  <a href="fun.html" class="card">🎯 Fun Tools</a>
+  <a href="planner.html" class="card">Planner Tools</a> 
+</div>
+
+</body>
+</html>
+<div class="navbar">
+<img src="logo.png" class="logo">
+<h2>Student Tools Hub</h2>
+</div>
 
 <div class="container">
 
-<!-- Percentage -->
-<div class="card">
-<h3>Percentage Calculator</h3>
-<input id="total" placeholder="Total Marks">
-<input id="obtained" placeholder="Obtained Marks">
-<button onclick="calc()">Calculate</button>
-<p id="res"></p>
-</div>
+<!-- Basic Tools -->
+<div class="card"><h3>Percentage</h3><input id="t"><input id="o"><button onclick="res.innerText=(o.value/t.value*100).toFixed(2)+'%'">Calc</button><p id="res"></p></div>
 
-<!-- CGPA -->
-<div class="card">
-<h3>CGPA Calculator</h3>
-<input id="cgpa" placeholder="Enter CGPA">
-<button onclick="cgpaCalc()">Convert</button>
-<p id="cgpaRes"></p>
-</div>
+<div class="card"><h3>CGPA</h3><input id="cg"><button onclick="cgRes.innerText=(cg.value*9.5).toFixed(2)+'%'">Calc</button><p id="cgRes"></p></div>
 
-<!-- Age -->
-<div class="card">
-<h3>Age Calculator</h3>
-<input type="date" id="dob">
-<button onclick="ageCalc()">Calculate</button>
-<p id="ageRes"></p>
-</div>
+<div class="card"><h3>Age</h3><input type="date" id="dob"><button onclick="ageRes.innerText=new Date().getFullYear()-new Date(dob.value).getFullYear()">Calc</button><p id="ageRes"></p></div>
 
-<!-- BMI -->
-<div class="card">
-<h3>BMI Calculator</h3>
-<input id="weight" placeholder="Weight (kg)">
-<input id="height" placeholder="Height (m)">
-<button onclick="bmiCalc()">Calculate</button>
-<p id="bmiRes"></p>
-</div>
+<div class="card"><h3>BMI</h3><input id="w"><input id="h"><button onclick="bmiRes.innerText=(w.value/(h.value*h.value)).toFixed(2)">Calc</button><p id="bmiRes"></p></div>
 
-<!-- Interest -->
-<div class="card">
-<h3>Simple Interest</h3>
-<input id="p" placeholder="Principal">
-<input id="r" placeholder="Rate">
-<input id="t" placeholder="Time">
-<button onclick="siCalc()">Calculate</button>
-<p id="siRes"></p>
-</div>
+<!-- Maths -->
+<div class="card"><h3>Square</h3><input id="sq"><button onclick="sqRes.innerText=sq.value*sq.value">Calc</button><p id="sqRes"></p></div>
 
-<!-- Discount -->
-<div class="card">
-<h3>Discount Calculator</h3>
-<input id="price" placeholder="Original Price">
-<input id="disc" placeholder="Discount %">
-<button onclick="discCalc()">Calculate</button>
-<p id="discRes"></p>
-</div>
+<div class="card"><h3>Cube</h3><input id="cu"><button onclick="cuRes.innerText=cu.value*cu.value*cu.value">Calc</button><p id="cuRes"></p></div>
+
+<div class="card"><h3>Even/Odd</h3><input id="eo"><button onclick="eoRes.innerText=(eo.value%2==0)?'Even':'Odd'">Check</button><p id="eoRes"></p></div>
+
+<div class="card"><h3>Power</h3><input id="b"><input id="e"><button onclick="powRes.innerText=Math.pow(b.value,e.value)">Calc</button><p id="powRes"></p></div>
+
+<div class="card"><h3>Factorial</h3><input id="f"><button onclick="let r=1;for(let i=1;i<=f.value;i++)r*=i;factRes.innerText=r">Calc</button><p id="factRes"></p></div>
+
+<div class="card"><h3>Prime</h3><input id="p"><button onclick="let c=0;for(let i=1;i<=p.value;i++){if(p.value%i==0)c++}primeRes.innerText=(c==2)?'Prime':'No'">Check</button><p id="primeRes"></p></div>
+
+<!-- Conversion -->
+<div class="card"><h3>°C→°F</h3><input id="c"><button onclick="cRes.innerText=(c.value*9/5+32)">Convert</button><p id="cRes"></p></div>
+
+<div class="card"><h3>Km→Miles</h3><input id="km"><button onclick="kmRes.innerText=(km.value*0.621)">Convert</button><p id="kmRes"></p></div>
+
+<div class="card"><h3>Days→Years</h3><input id="d"><button onclick="dRes.innerText=(d.value/365).toFixed(2)">Convert</button><p id="dRes"></p></div>
+
+<div class="card"><h3>Binary</h3><input id="bn"><button onclick="bnRes.innerText=(+bn.value).toString(2)">Convert</button><p id="bnRes"></p></div>
+
+<!-- Finance -->
+<div class="card"><h3>Discount</h3><input id="pr"><input id="di"><button onclick="diRes.innerText=pr.value-(pr.value*di.value/100)">Calc</button><p id="diRes"></p></div>
+
+<div class="card"><h3>Interest</h3><input id="pp"><input id="rr"><input id="tt"><button onclick="siRes.innerText=(pp.value*rr.value*tt.value)/100">Calc</button><p id="siRes"></p></div>
+
+<div class="card"><h3>EMI</h3><input id="l"><input id="r"><input id="ti"><button onclick="let R=r.value/12/100;let emi=(l.value*R*Math.pow(1+R,ti.value))/(Math.pow(1+R,ti.value)-1);emiRes.innerText=emi.toFixed(2)">Calc</button><p id="emiRes"></p></div>
+
+<div class="card"><h3>₹→$</h3><input id="inr"><button onclick="usd.innerText=(inr.value/83).toFixed(2)">Convert</button><p id="usd"></p></div>
+
+<!-- Fun -->
+<div class="card"><h3>Random</h3><button onclick="rand.innerText=Math.floor(Math.random()*100)">Gen</button><p id="rand"></p></div>
+
+<div class="card"><h3>Password</h3><button onclick="let s='abcABC123';let p='';for(let i=0;i<8;i++)p+=s[Math.floor(Math.random()*s.length)];pass.innerText=p">Gen</button><p id="pass"></p></div>
+
+<div class="card"><h3>Palindrome</h3><input id="pal"><button onclick="palRes.innerText=(pal.value==pal.value.split('').reverse().join(''))?'Yes':'No'">Check</button><p id="palRes"></p></div>
+
+<div class="card"><h3>Word Count</h3><input id="txt"><button onclick="wc.innerText=txt.value.split(' ').length">Count</button><p id="wc"></p></div>
+
+<div class="card"><h3>Reverse</h3><input id="rev"><button onclick="revRes.innerText=rev.value.split('').reverse().join('')">Rev</button><p id="revRes"></p></div>
+
+<div class="card"><h3>Average</h3><input id="av"><button onclick="let a=av.value.split(',').map(Number);avg.innerText=a.reduce((x,y)=>x+y)/a.length">Calc</button><p id="avg"></p></div>
+
+<div class="card"><h3>% Increase</h3><input id="o1"><input id="n1"><button onclick="inc.innerText=((n1.value-o1.value)/o1.value*100).toFixed(2)+'%'">Calc</button><p id="inc"></p></div>
+
+<div class="card"><h3>Tip</h3><input id="bill"><input id="tip"><button onclick="tipRes.innerText=bill.value*(tip.value/100)">Calc</button><p id="tipRes"></p></div>
+
+<div class="card"><h3>Color</h3><button onclick="let c='#'+Math.floor(Math.random()*16777215).toString(16);col.innerText=c;document.body.style.background=c">Gen</button><p id="col"></p></div>
+
+<div class="card"><h3>Stopwatch</h3><button onclick="start()">Start</button><button onclick="stop()">Stop</button><p id="time"></p></div>
 
 </div>
 
 <script>
-
-// Percentage
-function calc(){
-let t = document.getElementById("total").value;
-let o = document.getElementById("obtained").value;
-document.getElementById("res").innerText = (o/t*100).toFixed(2) + "%";
-}
-
-// CGPA
-function cgpaCalc(){
-let c = document.getElementById("cgpa").value;
-document.getElementById("cgpaRes").innerText = (c*9.5).toFixed(2) + "%";
-}
-
-// Age
-function ageCalc(){
-let dob = new Date(document.getElementById("dob").value);
-let diff = Date.now() - dob.getTime();
-let age = new Date(diff).getUTCFullYear() - 1970;
-document.getElementById("ageRes").innerText = age + " Years";
-}
-
-// BMI
-function bmiCalc(){
-let w = document.getElementById("weight").value;
-let h = document.getElementById("height").value;
-let bmi = (w/(h*h)).toFixed(2);
-document.getElementById("bmiRes").innerText = "BMI: " + bmi;
-}
-
-// Interest
-function siCalc(){
-let p = document.getElementById("p").value;
-let r = document.getElementById("r").value;
-let t = document.getElementById("t").value;
-let si = (p*r*t)/100;
-document.getElementById("siRes").innerText = "SI: " + si;
-}
-
-// Discount
-function discCalc(){
-let price = document.getElementById("price").value;
-let d = document.getElementById("disc").value;
-let final = price - (price*d/100);
-document.getElementById("discRes").innerText = "Final Price: " + final;
-}
-
+let t=0,i;
+function start(){i=setInterval(()=>{t++;time.innerText=t+'s'},1000);}
+function stop(){clearInterval(i);}
 </script>
 
 </body>
